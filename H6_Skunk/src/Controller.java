@@ -3,6 +3,7 @@ import edu.princeton.cs.introcs.*;
 
 public class Controller
 {
+	private static final String SKUNK_WELCOME_MESSAGE = "Welcome to Skunk 0.47\n";
 	// Refactor using constant extraction
 	private static final int SKUNK_DEUCE_CHIP_PENALTY = 2;
 	private static final int SKUNK_DEUCE_SUM = 3;
@@ -35,7 +36,7 @@ public class Controller
 
 	public boolean run()
 	{
-		ui.println("Welcome to Skunk 0.47\n");
+		ui.println(SKUNK_WELCOME_MESSAGE);
 
 		String numberPlayersString = skunkUI.promptReadAndReturn("How many players?");
 		this.numberOfPlayers = Integer.parseInt(numberPlayersString);
