@@ -38,15 +38,8 @@ public class Controller
 	{
 		ui.println(SKUNK_WELCOME_MESSAGE);
 
-		String numberPlayersString = skunkUI.promptReadAndReturn("How many players?");
-		this.numberOfPlayers = Integer.parseInt(numberPlayersString);
-
-		for (int playerNumber = 0; playerNumber < numberOfPlayers; playerNumber++)
-		{
-			ui.print("Enter name of player " + (playerNumber + 1) + ": ");
-			playerNames[playerNumber] = StdIn.readLine();
-			this.players.add(new Player(50));
-		}
+		this.numberOfPlayers = getNumberOfPlayers();
+		namePlayers();
 		activePlayerIndex = 0;
 		activePlayer = players.get(activePlayerIndex);
 
@@ -235,6 +228,20 @@ public class Controller
 
 		ui.println("-----------------------");
 		return true;
+	}
+
+	private void namePlayers() {
+		for (int playerNumber = 0; playerNumber < numberOfPlayers; playerNumber++)
+		{
+			ui.print("Enter name of player " + (playerNumber + 1) + ": ");
+			playerNames[playerNumber] = StdIn.readLine();
+			this.players.add(new Player(50));
+		}
+	}
+
+	private int getNumberOfPlayers() {
+		String numberPlayersString = skunkUI.promptReadAndReturn("How many players?");
+		return Integer.parseInt(numberPlayersString);
 	}
 
 	// Fourth refactor using method extraction
